@@ -9,7 +9,7 @@
         /ip dns static add name=$name address=2a10:50c0::2:ff
     }
 
-    /ip dns set servers="" use-doh-server="https://$name/dns-query" verify-doh-cert=yes
+    /ip dns set use-doh-server="https://$name/dns-query"
 
-    /ip dns forwarders add name="adguard-unfiltered" doh-servers="https://$name/dns-query" verify-doh-cert=yes
+    /ip dns forwarders add name="adguard-unfiltered" doh-servers="https://$name/dns-query"
 }
