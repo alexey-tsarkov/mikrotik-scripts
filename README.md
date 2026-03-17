@@ -10,7 +10,7 @@ This project is licensed under [CC0 1.0 Universal](LICENSE) - Public Domain.
 
 ### CA Certificate Update (`cacert-update.rsc`)
 
-Automatically downloads and installs the latest CA certificate bundle from curl.se. This is useful for keeping your router's certificate store up to date for secure HTTPS connections.
+Automatically downloads and installs the latest CA certificate bundle from [curl.se](https://curl.se/docs/sslcerts.html). This is useful for keeping your router's certificate store up to date for secure HTTPS connections.
 
 **Usage:**
 ```routeros
@@ -21,26 +21,26 @@ Automatically downloads and installs the latest CA certificate bundle from curl.
 
 Ready-to-use DNS-over-HTTPS (DoH) configurations for popular public DNS providers.
 
-#### Cloudflare
+#### [Cloudflare](https://developers.cloudflare.com/1.1.1.1/)
 - `cloudflare.rsc` - Standard Cloudflare DNS (1.1.1.1)
 - `cloudflare-security.rsc` - Cloudflare Security (blocks malware)
 - `cloudflare-family.rsc` - Cloudflare Family (blocks malware + adult content)
 
-#### AdGuard DNS
+#### [AdGuard DNS](https://adguard-dns.io/public-dns.html)
 - `adguard.rsc` - Standard AdGuard DNS
 - `adguard-family.rsc` - AdGuard Family (blocks ads, trackers, malware + adult content)
 - `adguard-unfiltered.rsc` - Unfiltered AdGuard DNS
 
-#### Google DNS
+#### [Google DNS](https://developers.google.com/speed/public-dns/docs/intro)
 - `google.rsc` - Google Public DNS
 - `google64.rsc` - Google Public DNS64
 
-#### Quad9
+#### [Quad9](https://quad9.net/service/service-addresses-and-features/)
 - `quad9.rsc` - Standard Quad9 DNS
 - `quad9-secured.rsc` - Quad9 Secured (blocks malware)
 - `quad9-unsecured.rsc` - Quad9 Unsecured
 
-#### Yandex DNS
+#### [Yandex DNS](https://dns.yandex.ru/)
 - `yandex.rsc` - Standard Yandex DNS
 - `yandex-safe.rsc` - Yandex Safe (blocks malware)
 - `yandex-family.rsc` - Yandex Family (blocks malware + adult content)
