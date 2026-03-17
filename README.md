@@ -32,8 +32,8 @@ Ready-to-use DNS-over-HTTPS (DoH) configurations for popular public DNS provider
 - `adguard-unfiltered.rsc` - Unfiltered AdGuard DNS
 
 #### Google DNS
-- `google.rsc` - Google Public DNS (IPv4)
-- `google64.rsc` - Google Public DNS (IPv6)
+- `google.rsc` - Google Public DNS
+- `google64.rsc` - Google Public DNS64
 
 #### Quad9
 - `quad9.rsc` - Standard Quad9 DNS
