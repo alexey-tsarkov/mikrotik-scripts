@@ -2,6 +2,7 @@ name: Adlist
 run-name: ${{ github.actor }} is generating adlists
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
 
