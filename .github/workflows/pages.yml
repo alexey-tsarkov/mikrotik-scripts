@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AdGuard
-      - uses: ./.github/workflows/adlist.yml
+        uses: ./.github/workflows/adlist.yml
         with:
           name: adguard
           filter-url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt
