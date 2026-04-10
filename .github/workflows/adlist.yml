@@ -21,10 +21,10 @@ jobs:
       - name: Generate hosts
         run: |
           sed -nE \
-            's/^\|\|([0-9a-z]+([-.]([0-9a-z]+)+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
+            's/^\|\|([0-9a-z]+([-.][0-9a-z]+)+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
             filter.txt > hosts
       - run: echo "::notice::$(wc -l hosts) hosts added"
-      - name: Upload hosts artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.name }}
