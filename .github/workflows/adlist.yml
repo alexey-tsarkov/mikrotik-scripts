@@ -1,0 +1,23 @@
+name: Adlist generator
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      filter-url:
+        required: true
+        type: string
+      address:
+        type: string
+
+jobs:
+  adlist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate ${{ inputs.name }} hosts
+        run: |
+          wget -qO - "${{ inputs.filter-url }}" \
+          | sed -nE 's/^\|\|([^*]+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
+          > "${{ inputs.name }}.txt"
