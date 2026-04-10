@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AdGuard
-        uses: $GITHUB_REPOSITORY/.github/workflows/adlist.yml
+        uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml
         with:
           name: adguard
           filter-url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt
       - name: EasyList
-        uses: $GITHUB_REPOSITORY/.github/workflows/adlist.yml
+        uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml
         with:
           name: easylist
           filter-url: https://easylist.to/easylist/easylist.txt
       - name: EasyPrivacy
-        uses: $GITHUB_REPOSITORY/.github/workflows/adlist.yml
+        uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml
         with:
           name: easyprivacy
           filter-url: https://easylist.to/easylist/easyprivacy.txt
