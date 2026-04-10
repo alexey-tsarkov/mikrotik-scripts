@@ -15,12 +15,12 @@ jobs:
           name: adguard
           filter-url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt
       - name: EasyList
-        uses: ../.github/workflows/adlist.yml
+        uses: ./.github/workflows/adlist.yml
         with:
           name: easylist
           filter-url: https://easylist.to/easylist/easylist.txt
       - name: EasyPrivacy
-        uses: ../.github/workflows/adlist.yml
+        uses: ./.github/workflows/adlist.yml
         with:
           name: easyprivacy
           filter-url: https://easylist.to/easylist/easyprivacy.txt
