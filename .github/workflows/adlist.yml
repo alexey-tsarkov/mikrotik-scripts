@@ -23,10 +23,11 @@ jobs:
             "${{ inputs.filter-url }}"
       - name: Generate hosts
         run: |
-          sed \
-            -nE 's/^\|\|([0-9a-z]+([-.][0-9a-z]+)+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
-            filter.txt > "${{ inputs.name }}.txt" \
-            && echo "::notice::$(awk 'END {print NR}' '${{ inputs.name }}.txt') hosts added"
+          awk \
+            '/^\|\|([0-9a-z]+([-\.][0-9a-z]+)+)\^$/ {print addr,substr($1,3,length($1)-3)}' \
+            addr='${{ case(inputs.address == '::', '::', '0.0.0.0') }}' \
+            filter.txt > '${{ inputs.name }}.txt' \
+            && awk 'END {print "::notice::"NR" hosts added"}' '${{ inputs.name }}.txt'
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
