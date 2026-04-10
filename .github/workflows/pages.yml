@@ -32,18 +32,15 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: adguard
-          path: adlist/adguard.txt
       - name: Download easylist artifact
         uses: actions/download-artifact@v5
         with:
           name: easylist
-          path: adlist/easylist.txt
       - name: Download easyprivacy artifact
         uses: actions/download-artifact@v5
         with:
           name: easyprivacy
-          path: adlist/easyprivacy.txt
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: adlist
+          path: .
