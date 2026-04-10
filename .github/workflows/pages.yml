@@ -9,23 +9,25 @@ jobs:
   adguard:
     uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml@main
     with:
-      name: ${{ job.name }}
+      name: adguard
       filter-url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt
 
   easylist:
     uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml@main
     with:
-      name: ${{ job.name }}
+      name: easylist
       filter-url: https://easylist.to/easylist/easylist.txt
 
   easyprivacy:
     uses: alexey-tsarkov/mikrotik-scripts/.github/workflows/adlist.yml@main
     with:
-      name: ${{ job.name }}
+      name: easyprivacy
       filter-url: https://easylist.to/easylist/easyprivacy.txt
 
   pages:
     needs: [adguard, easylist, easyprivacy]
-    uses: actions/upload-pages-artifact@v4.0.0
-    with:
-      path:
+    steps:
+      - uses: actions/download-artifact@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path:

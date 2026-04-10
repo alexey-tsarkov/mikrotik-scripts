@@ -20,4 +20,9 @@ jobs:
         run: |
           wget -qO - "${{ inputs.filter-url }}" \
           | sed -nE 's/^\|\|([^*]+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
-          > "${{ inputs.name }}.txt"
+          > ${{ inputs.name }}.txt
+      - name: Upload ${{ inputs.name }} hosts file
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.name }}
+          path: ${{ inputs.name }}.txt
