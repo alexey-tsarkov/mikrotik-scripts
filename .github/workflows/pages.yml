@@ -36,11 +36,11 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: easylist
-      - name Download easyprivacy artifact
+      - name: Download easyprivacy artifact
         uses: actions/download-artifact@v5
         with:
           name: easyprivacy
-      - Upload pages artifact
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: .
