@@ -26,7 +26,7 @@ jobs:
           tee '${{ inputs.name }}.txt' |\
           awk 'END {print "::notice::"NR" hosts added"}'
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ inputs.name }}
           path: ${{ inputs.name }}.txt
