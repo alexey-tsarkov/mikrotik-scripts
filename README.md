@@ -17,6 +17,25 @@ Automatically downloads and installs the latest CA certificate bundle from [curl
 /system script run cacert-update
 ```
 
+### Adlists Configuration (`adlist/`)
+
+Scripts for configuring adlists (blocklists) in RouterOS. These scripts help you set up DNS-level ad blocking by importing domain blocklists from various sources.
+
+#### Features
+- Import adlists from multiple sources (AdGuard, EasyList)
+- Automatically parse and format domains for RouterOS DNS static entries
+- Easy updates and maintenance
+
+**Usage:**
+```routeros
+/ip dns set cache-size=(16 * 1024)
+/ip dns adlist add url="https://alexey-tsarkov.github.io/mikrotik-scripts/adguard.txt"
+```
+
+**Sources:**
+- [AdGuard DNS Filter](https://adguard.com/kb/en/general/ad-filtering/adguard-filters/)
+- [EasyList](https://easylist.to/)
+
 ### Public DNS Configurations (`public-dns/`)
 
 Ready-to-use DNS-over-HTTPS (DoH) configurations for popular public DNS providers.
@@ -78,6 +97,7 @@ Ready-to-use DNS-over-HTTPS (DoH) configurations for popular public DNS provider
 ## Notes
 
 - DNS scripts configure both legacy DNS static entries and DoH forwarders (RouterOS v7+)
+- Adlists scripts may create thousands of DNS static entries - monitor router memory usage
 - Test scripts in a lab environment before deploying to production
 - Always backup your configuration before running new scripts
 
