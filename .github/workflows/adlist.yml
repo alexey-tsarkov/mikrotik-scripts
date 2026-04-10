@@ -20,7 +20,7 @@ jobs:
         run: |
           wget -qO - '${{ inputs.filter-url }}' |\
           sed "s/\r//g" |\
-          awk '/^\|\|([0-9a-z]+([-\.][0-9a-z]+)+)\^$/ {print substr($1,3,length($1)-3)}' |\
+          awk '/^\|\|(([0-9a-z]+[-\.])+[a-z]+)\^$/ {print substr($1,3,length($1)-3)}' |\
           uniq |\
           awk '{print "${{ case(inputs.address == '::', '::', '0.0.0.0') }}",$1}' |\
           tee '${{ inputs.name }}.txt' |\
