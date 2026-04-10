@@ -23,7 +23,7 @@ jobs:
           sed -nE \
             's/^\|\|([0-9a-z]+([-.][0-9a-z]+)+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
             filter.txt > "${{ inputs.name }}.txt" \
-            && echo "::notice::$(awk 'END {print NR}' hosts) hosts added"
+            && echo "::notice::$(awk 'END {print NR}' '${{ inputs.name }}.txt') hosts added"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
