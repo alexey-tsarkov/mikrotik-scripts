@@ -16,13 +16,16 @@ jobs:
   adlist:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate ${{ inputs.name }} hosts
+      - name: Download filter
+        run: wget -qO filter.txt "${{ inputs.filter-url }}"
+      - name: Generate hosts
         run: |
-          wget -qO - "${{ inputs.filter-url }}" \
-          | sed -nE 's/^\|\|([^*]+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
-          > ${{ inputs.name }}.txt
-      - name: Upload ${{ inputs.name }} hosts file
+          sed -nE \
+            's/^\|\|([0-9a-z]+([-.]([0-9a-z]+)+)\^\s*/${{ case(inputs.address == '::', '::', '0.0.0.0') }} \1/p' \
+            filter.txt > hosts
+      - run: echo "::notice::$(wc -l hosts) hosts added"
+      - name: Upload hosts artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.name }}
-          path: ${{ inputs.name }}.txt
+          path: hosts
