@@ -16,18 +16,15 @@ jobs:
   adlist:
     runs-on: ubuntu-latest
     steps:
-      - name: Download filter
-        run: |
-          wget \
-            -qO filter.txt \
-            "${{ inputs.filter-url }}"
       - name: Generate hosts
         run: |
-          awk \
-            '/^\|\|([0-9a-z]+([-\.][0-9a-z]+)+)\^$/ {print addr,substr($1,3,length($1)-3)}' \
-            addr='${{ case(inputs.address == '::', '::', '0.0.0.0') }}' \
-            filter.txt > '${{ inputs.name }}.txt' \
-            && awk 'END {print "::notice::"NR" hosts added"}' '${{ inputs.name }}.txt'
+          wget -qO - '${{ inputs.filter-url }}' |\
+          sed "s/\r//g" |\
+          awk '/^\|\|([0-9a-z]+([-\.][0-9a-z]+)+)\^$/ {print substr($1,3,length($1)-3)}' |\
+          uniq |\
+          awk '{print "${{ case(inputs.address == '::', '::', '0.0.0.0') }}",$1}' |\
+          tee '${{ inputs.name }}.txt' |\
+          awk 'END {print "::notice::"NR" hosts added"}'
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
