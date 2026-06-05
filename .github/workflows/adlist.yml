@@ -21,7 +21,7 @@ jobs:
           wget -qO - '${{ inputs.filter-url }}' |\
           sed "s/\r//g" |\
           awk '/^\|\|(([0-9a-z]+[-\.])+[a-z]+)\^$/ {print substr($1,3,length($1)-3)}' |\
-          uniq |\
+          sort -u |\
           awk '{print "${{ case(inputs.address == '::', '::', '0.0.0.0') }}",$1}' |\
           tee '${{ inputs.name }}.txt' |\
           awk 'END {print "::notice::"NR" hosts added"}'
