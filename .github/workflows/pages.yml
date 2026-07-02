@@ -1,4 +1,4 @@
-name: GitHub pages
+name: GitHub Pages
 
 on:
   workflow_dispatch:
@@ -37,15 +37,15 @@ jobs:
         with:
           name: adguard
       - name: Download easylist artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: easylist
       - name: Download easyprivacy artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: easyprivacy
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
